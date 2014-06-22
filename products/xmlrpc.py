@@ -12,7 +12,7 @@ from SimpleXMLRPCServer import SimpleXMLRPCServer
 ## ------------ Imports ----------- ##
 
 ## ------------ Relative Imports ----------- ##
-import engine
+#import engine
 ## ------------ Relative Imports ----------- ##
 
 
@@ -27,7 +27,6 @@ class XmlRpc(object):
     """."""
     def server(self, **kwargs):
         """."""
-        import pdb; pdb.set_trace()
         hostname = kwargs.get('hostname')
         port = kwargs.get('port')
 
@@ -37,7 +36,7 @@ class XmlRpc(object):
             raise Exception("Expecting value for keyword argument port")
 
         server = SimpleXMLRPCServer((hostname, port))
-        print "Listening on port {0}...".format(port)
+        print "\n>>> Listening on port {0}...\n".format(port)
         server.register_function(rpc_target, "rpc_target")
         server.serve_forever()
 
