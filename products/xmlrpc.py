@@ -12,19 +12,22 @@ from SimpleXMLRPCServer import SimpleXMLRPCServer
 ## ------------ Imports ----------- ##
 
 ## ------------ Relative Imports ----------- ##
-from product import engine
+import engine
 ## ------------ Relative Imports ----------- ##
 
 
-def rpc_target():
+def rpc_target(arg):
     """."""
-    engine = engine.Engine()
+    print ">>> RECEIVED"
+    #engine = engine.Engine()
+    return True
 
 
 class XmlRpc(object):
     """."""
     def server(self, **kwargs):
         """."""
+        import pdb; pdb.set_trace()
         hostname = kwargs.get('hostname')
         port = kwargs.get('port')
 
