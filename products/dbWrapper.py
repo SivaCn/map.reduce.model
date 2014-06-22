@@ -21,7 +21,6 @@ class PreSet(object):
     metadata = MetaData(engine)
 
 
-
 class DBAPI(object):
 
     large_table = Table('large_table', PreSet.metadata,
@@ -33,13 +32,13 @@ class DBAPI(object):
 
     @classmethod
     def create(cls, table_name=''):
-        import pdb; pdb.set_trace()
-        table_ref = cls.__getattribute__(cls, table_name)
-        if table_ref:
-            table_ref.create()
+        try:
+            cls.__getattribute__(cls, table_name).create()
+        except Exception as error:
+            print "ERROR:", str(error)
 
     @classmethod
-    def insert(cls, _many='', **_single):
+    def insert(cls, table_name='', _many='', **_single):
         pass
 
     @classmethod
